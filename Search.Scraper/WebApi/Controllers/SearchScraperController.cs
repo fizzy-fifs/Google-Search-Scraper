@@ -1,8 +1,8 @@
-﻿using Google_Search_Scraper.WebApi.Models;
-using Google_Search_Scraper.WebApi.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Search.Scraper.WebApi.Models;
+using Search.Scraper.WebApi.Services;
 
-namespace Google_Search_Scraper.WebApi.Controllers;
+namespace Search.Scraper.WebApi.Controllers;
 
 [ApiController]
 [Route("url-position-lookup")]

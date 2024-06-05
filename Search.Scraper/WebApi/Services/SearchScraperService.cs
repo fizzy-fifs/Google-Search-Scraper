@@ -1,9 +1,9 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Web;
-using Google_Search_Scraper.WebApi.Models;
+using Search.Scraper.WebApi.Models;
 
-namespace Google_Search_Scraper.WebApi.Services;
+namespace Search.Scraper.WebApi.Services;
 
 public class SearchScraperService : ISearchScraperService
 {

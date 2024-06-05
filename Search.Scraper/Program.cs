@@ -1,4 +1,4 @@
-using Google_Search_Scraper.WebApi.Services;
+using Search.Scraper.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

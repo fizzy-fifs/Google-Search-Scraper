@@ -1,4 +1,4 @@
-namespace Google_Search_Scraper.WebApi.Models;
+namespace Search.Scraper.WebApi.Models;
 
 public class KeywordAndUrl
 {
