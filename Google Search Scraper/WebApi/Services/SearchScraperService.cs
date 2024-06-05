@@ -6,24 +6,16 @@ namespace Google_Search_Scraper.WebApi.Services;
 
 public class SearchScraperService : ISearchScraperService
 {
-    public SearchScraperService()
-    {
-    }
-
     public async Task<string> GetUrlPositionsAsync(KeywordAndUrl keywordAndUrl)
     {
-        var encodedKeyword = HttpUtility.UrlEncode(keywordAndUrl.Keyword);
-
-        var client = new HttpClient();
-        var searchUrl = $"https://www.google.co.uk/search?num=100&q={encodedKeyword}";
-        var html = await client.GetStringAsync(searchUrl);
+        var html = await FetchHtmlAsync(keywordAndUrl.Keyword);
 
         var regex = new Regex(@"<a[^>]+href=""/url\?q=(http[s]?://[^""]+)""", RegexOptions.IgnoreCase);
         var matches = regex.Matches(html);
 
         var urlPositionsInSearchResults = new List<string>();
-        
-        for (var i=0; i < 100; i++)
+
+        for (var i = 0; i < 100; i++)
         {
             var matchedUrl = matches[i].Groups[1].Value;
             if (matchedUrl.Contains(keywordAndUrl.Url))
@@ -33,5 +25,16 @@ public class SearchScraperService : ISearchScraperService
         }
 
         return urlPositionsInSearchResults.Count == 0 ? "0" : string.Join(",", urlPositionsInSearchResults);
+    }
+
+    private static async Task<string> FetchHtmlAsync(string keyword)
+    {
+        var encodedKeyword = HttpUtility.UrlEncode(keyword);
+        var searchUrl = $"https://www.google.co.uk/search?num=100&q={encodedKeyword}";
+
+        var client = new HttpClient();
+        var html = await client.GetStringAsync(searchUrl);
+
+        return html;
     }
 }
