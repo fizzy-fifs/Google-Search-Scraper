@@ -2,7 +2,7 @@ namespace Search.Scraper.WebApi.Models;
 
 public class KeywordAndUrl
 {
-    public required string Keyword { get; set; }
+    public string Keyword { get; init; }
     
-    public required string Url { get; set; }
+    public string Url { get; init; }
 }
