@@ -1,5 +1,5 @@
-﻿using Google_Search_Scraper.WebApi.Controllers.Services;
-using Google_Search_Scraper.WebApi.Models;
+﻿using Google_Search_Scraper.WebApi.Models;
+using Google_Search_Scraper.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Google_Search_Scraper.WebApi.Controllers;
@@ -8,12 +8,10 @@ namespace Google_Search_Scraper.WebApi.Controllers;
 [Route("[controller]")]
 public class SearchScraperController : ControllerBase
 {
-    private readonly ILogger<SearchScraperController> _logger;
-    private readonly SearchScraperService _searchScraperService;
+    private readonly ISearchScraperService _searchScraperService;
     
-    public SearchScraperController(ILogger<SearchScraperController> logger, SearchScraperService searchScraperService)
+    public SearchScraperController(ISearchScraperService searchScraperService)
     {
-        _logger = logger;
         _searchScraperService = searchScraperService;
     }
 
