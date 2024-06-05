@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Web;
 using Google_Search_Scraper.WebApi.Models;
@@ -24,7 +25,7 @@ public class SearchScraperService : ISearchScraperService
             }
         }
 
-        return urlPositionsInSearchResults.Count == 0 ? "0" : string.Join(",", urlPositionsInSearchResults);
+        return urlPositionsInSearchResults.Count == 0 ? "0" : JsonSerializer.Serialize(string.Join(",", urlPositionsInSearchResults));
     }
 
     private static async Task<string> FetchHtmlAsync(string keyword)

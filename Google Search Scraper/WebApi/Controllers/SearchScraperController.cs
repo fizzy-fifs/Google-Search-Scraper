@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Google_Search_Scraper.WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("url-position-lookup")]
 public class SearchScraperController : ControllerBase
 {
     private readonly ISearchScraperService _searchScraperService;
